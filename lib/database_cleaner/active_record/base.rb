@@ -14,16 +14,16 @@ module DatabaseCleaner
     end
 
     class Base < DatabaseCleaner::Strategy
-      def self.migration_table_name
-        ::ActiveRecord::SchemaMigration.table_name
-      end
+      #def self.migration_table_name
+      #  ::ActiveRecord::SchemaMigration.table_name
+      #end
 
-      def self.exclusion_condition(column_name)
-        <<~SQL
-          #{column_name} <> '#{DatabaseCleaner::ActiveRecord::Base.migration_table_name}'
-            AND #{column_name} <> '#{::ActiveRecord::Base.internal_metadata_table_name}'
-        SQL
-      end
+      #def self.exclusion_condition(column_name)
+      #  <<~SQL
+      #    #{column_name} <> '#{DatabaseCleaner::ActiveRecord::Base.migration_table_name}'
+      #      AND #{column_name} <> '#{::ActiveRecord::Base.internal_metadata_table_name}'
+      #  SQL
+      #end
 
       def db=(*)
         super
